@@ -2,7 +2,7 @@ type Props = {
   icon?: React.ReactNode;
   title: string;
   subtitle?: string;
-  sideText: string;
+  sideText?: string;
 };
 
 const Header = ({ icon, title, subtitle, sideText }: Props) => {

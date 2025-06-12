@@ -8,6 +8,8 @@ export const DashboardBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  alignItems: "center",
-  padding: "1rem",
+  alignItems: "start",
+  padding: "0.5rem",
+  height: "100%",
+  width: "100%",
 }));

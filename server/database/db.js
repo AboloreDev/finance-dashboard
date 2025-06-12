@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 import KPI from "../models/kpi.js";
-import { kpis, products } from "../data/seeder.js";
+import { kpis, products, transactions } from "../data/seeder.js";
 import Product from "../models/Product.js";
+import Transaction from "../models/Transaction.js";
 
 const connectDb = async () => {
   // Connect to MongoDB Atlas
@@ -12,6 +13,7 @@ const connectDb = async () => {
   // await mongoose.connection.db.dropDatabase();
   // KPI.insertMany(kpis);
   // Product.insertMany(products);
+  // Transaction.insertMany(transactions);
 };
 
 export default connectDb;

@@ -68,7 +68,7 @@ const FirstRow = () => {
           subtitle="Top line represents revenue, and the bottom line represents expenses"
           sideText="+5%"
         />
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer>
           <AreaChart
             width={500}
             height={400}
@@ -126,7 +126,7 @@ const FirstRow = () => {
           subtitle="top line represents revenue, bottom line represents expenses"
           sideText="+4%"
         />
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer>
           <LineChart
             width={500}
             height={400}
