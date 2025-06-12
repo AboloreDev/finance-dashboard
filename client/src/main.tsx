@@ -12,14 +12,14 @@ export const store = configureStore({
   reducer: { [api.reducerPath]: api.reducer },
   middleware: (getDefault) => getDefault().concat(api.middleware),
 });
-setupListeners(store.disptach);
+setupListeners(store.dispatch);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
+    <Provider store={store}>
+      <BrowserRouter>
         <App />
-      </Provider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   </StrictMode>
 );

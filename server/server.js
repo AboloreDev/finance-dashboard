@@ -6,6 +6,8 @@ import helmet from "helmet";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import connectDB from "./database/db.js";
+import kpiRoutes from "./routes/kpiRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 const app = express();
 
 // configurations
@@ -28,6 +30,10 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// routes
+app.use("/api/kpis", kpiRoutes);
+app.use("/api/products", productRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

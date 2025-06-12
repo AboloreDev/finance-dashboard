@@ -1,8 +1,10 @@
 import { DashboardBox } from "../../components/Navbar/DashboardBox";
+import { useGetProductsQuery } from "../../redux/api";
 
-type Props = {};
-
-const SecondRow = (props: Props) => {
+const SecondRow = () => {
+  // DATA
+  const { data } = useGetProductsQuery();
+  console.log(data);
   return (
     <>
       {" "}

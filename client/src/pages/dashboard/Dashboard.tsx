@@ -17,36 +17,36 @@ const gridTemplateDesktop = `
 `;
 
 const gridTemplateMobile = `
-    " a"
-    " a"
-    " a"
-    "a "
-    " b"
-    "b "
-    "b"
-    " b"
-    " c"
-    " c"
-    " c"
-    " d"
-    " d"
-    " d"
-    " e"
-    " e"
-    " f"
-    " f"
-    " f"
-    " g"
-    " g"
-    " g"
-    " h"
-    " h"
-    " h"
-    " h"
-    " i"
-    " i"
-    " j"
-    " j"
+  "a"
+  "a"
+  "a"
+  "a"
+  "b"
+  "b"
+  "b"
+  "b"
+  "c"
+  "c"
+  "c"
+  "d"
+  "d"
+  "d"
+  "e"
+  "e"
+  "f"
+  "f"
+  "f"
+  "g"
+  "g"
+  "g"
+  "h"
+  "h"
+  "h"
+  "h"
+  "i"
+  "i"
+  "j"
+  "j"
 `;
 
 const DashboardPage = () => {
@@ -57,18 +57,18 @@ const DashboardPage = () => {
       height="100%"
       display="grid"
       gap="2rem"
-      paddingTop="2rem"
+      padding="2rem"
       sx={
         isLarge
           ? {
-              gridTemplateColumns: "repeat(3, minmax(37 0px, 1fr))",
-              gridTemplateAreas: gridTemplateDesktop,
+              gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
               gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
+              gridTemplateAreas: gridTemplateDesktop,
             }
           : {
-              gridTemplateAreas: gridTemplateMobile,
               gridAutoColumns: "1fr",
               gridAutoRows: "80px",
+              gridTemplateAreas: gridTemplateMobile,
             }
       }
     >
