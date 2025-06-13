@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import helmet from "helmet";
 import morgan from "morgan";
@@ -9,6 +8,7 @@ import connectDB from "./database/db.js";
 import kpiRoutes from "./routes/kpiRoutes.js";
 import transactionRoutes from "./routes/transactionRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
+
 const app = express();
 
 // configurations
@@ -17,7 +17,7 @@ dotenv.config();
 const PORT = process.env.PORT;
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello");
 });
 
 // connectDb

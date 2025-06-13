@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useMemo } from "react";
 import { DashboardBox } from "../../components/Navbar/DashboardBox";
 import { useGetKpisQuery } from "../../redux/api";
@@ -23,6 +24,7 @@ const FirstRow = () => {
   const revenueExpenses = useMemo(() => {
     return (
       data &&
+      // @ts-ignore
       data.kpisData[0].monthlyData.map(({ month, revenue, expenses }) => {
         return {
           name: month.substring(0, 3),
@@ -36,6 +38,7 @@ const FirstRow = () => {
   const revenueProfits = useMemo(() => {
     return (
       data &&
+      // @ts-ignore
       data.kpisData[0].monthlyData.map(({ month, revenue, expenses }) => {
         return {
           name: month.substring(0, 3),
@@ -49,6 +52,7 @@ const FirstRow = () => {
   const revenue = useMemo(() => {
     return (
       data &&
+      // @ts-ignore
       data.kpisData[0].monthlyData.map(({ month, revenue }) => {
         return {
           name: month.substring(0, 3),

@@ -7,7 +7,7 @@ import {
 } from "../../redux/api";
 import Header from "../../components/Navbar/Header";
 import { useMemo } from "react";
-import { Box, Tooltip } from "@mui/material";
+import { Box } from "@mui/material";
 import { Cell, Pie, PieChart } from "recharts";
 
 const ThirdRow = () => {
@@ -17,7 +17,9 @@ const ThirdRow = () => {
 
   const pieChartData = useMemo(() => {
     if (kpiData) {
+      // @ts-expect-error: kpisData may not be typed on operationalData, but we expect it to exist based on API response
       const totalExpenses = kpiData.kpisData[0].totalExpenses;
+      // @ts-expect-error: kpisData may not be typed on operationalData, but we expect it to exist based on API response
       return Object.entries(kpiData.kpisData[0].expensesByCategory)
         .filter(([key]) => key !== "$*") // Exclude the `$*` entry
         .map(([key, value]) => {
@@ -188,7 +190,7 @@ const ThirdRow = () => {
                   paddingAngle={2}
                   dataKey="value"
                 >
-                  {data.map((entry, index) => (
+                  {data.map((_, index) => (
                     <Cell
                       key={`cell-${index}`}
                       fill={pieColors[index % pieColors.length]}

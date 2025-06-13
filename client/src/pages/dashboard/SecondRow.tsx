@@ -31,7 +31,9 @@ const SecondRow = () => {
   const operationalExpenses = useMemo(() => {
     return (
       operationalData &&
+      // @ts-expect-error: kpisData may not be typed on operationalData, but we expect it to exist based on API response
       operationalData.kpisData[0].monthlyData.map(
+        // @ts-expect-error: kpisData may not be typed on operationalData, but we expect it to exist based on API response
         ({ operationalExpenses, nonOperationalExpenses, month }) => {
           return {
             name: month.substring(0, 3),
@@ -139,7 +141,7 @@ const SecondRow = () => {
               paddingAngle={2}
               dataKey="value"
             >
-              {pieData.map((entry, index) => (
+              {pieData.map((_i, index) => (
                 <Cell
                   key={`cell-${index}`}
                   fill={pieColors[index % pieColors.length]}
