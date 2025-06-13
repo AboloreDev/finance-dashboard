@@ -14,7 +14,7 @@ const MobileMenu = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-black bg-opacity-20 transition-opacity ${
+        className={`fixed z-10 inset-0 bg-black bg-opacity-20 transition-opacity ${
           isOpen ? "opacity-60" : "opacity-0 pointer-events-none"
         }`}
         onClick={toggleMenu}
@@ -22,7 +22,7 @@ const MobileMenu = () => {
 
       {/* Slide-In Mobile Menu */}
       <div
-        className={`fixed top-0 left-0 h-full bg-black w-64 p-6 transition-transform transform ${
+        className={`fixed top-0 z-10 left-0 h-full bg-black w-64 p-6 transition-transform transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

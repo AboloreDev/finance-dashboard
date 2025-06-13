@@ -8,7 +8,7 @@ export const DashboardBox = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  alignItems: "start",
+  alignItems: "center",
   padding: "0.5rem",
   height: "100%",
   width: "100%",

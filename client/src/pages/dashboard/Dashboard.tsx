@@ -55,7 +55,9 @@ const DashboardPage = () => {
     <Box
       display="grid"
       marginTop="1rem"
+      marginRight="0.5rem"
       gap="2rem"
+      padding="0 1rem 0 0"
       sx={
         isLarge
           ? {
