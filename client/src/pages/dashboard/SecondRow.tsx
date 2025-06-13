@@ -28,7 +28,6 @@ const SecondRow = () => {
   // DATA
   const { data: productsData } = useGetProductsQuery();
   const { data: operationalData } = useGetKpisQuery();
-  console.log(productsData);
   const operationalExpenses = useMemo(() => {
     return (
       operationalData &&

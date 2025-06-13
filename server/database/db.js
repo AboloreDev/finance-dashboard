@@ -10,10 +10,10 @@ const connectDb = async () => {
   mongoose.connection.on("connected", () => console.log("Database connected"));
   await mongoose.connect(process.env.MONGODB_URI);
 
-  // await mongoose.connection.db.dropDatabase();
-  // KPI.insertMany(kpis);
-  // Product.insertMany(products);
-  // Transaction.insertMany(transactions);
+  await mongoose.connection.db.dropDatabase();
+  KPI.insertMany(kpis);
+  Product.insertMany(products);
+  Transaction.insertMany(transactions);
 };
 
 export default connectDb;

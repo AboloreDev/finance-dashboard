@@ -7,14 +7,30 @@ import {
 } from "../../redux/api";
 import Header from "../../components/Navbar/Header";
 import { useMemo } from "react";
-import { Box } from "@mui/material";
+import { Box, Tooltip } from "@mui/material";
+import { Cell, Pie, PieChart } from "recharts";
 
 const ThirdRow = () => {
   const { data: kpiData } = useGetKpisQuery();
   const { data: transactionData } = useGetTransactionsQuery();
   const { data: productData } = useGetProductsQuery();
-  console.log("transactionData:", transactionData);
-  console.log("productsData", productData);
+
+  const pieChartData = useMemo(() => {
+    if (kpiData) {
+      const totalExpenses = kpiData.kpisData[0].totalExpenses;
+      return Object.entries(kpiData.kpisData[0].expensesByCategory)
+        .filter(([key]) => key !== "$*") // Exclude the `$*` entry
+        .map(([key, value]) => {
+          return [
+            { name: key, value: value },
+            {
+              name: `${key} of Total`,
+              value: totalExpenses - (value as number),
+            },
+          ];
+        });
+    }
+  }, [kpiData]);
 
   const products = useMemo(() => {
     return (
@@ -80,6 +96,8 @@ const ThirdRow = () => {
       flex: 0.4,
     },
   ];
+
+  const pieColors = ["#8884d8", "#5250ae"];
   return (
     <>
       {" "}
@@ -146,8 +164,57 @@ const ThirdRow = () => {
           </div>
         </Box>
       </DashboardBox>
-      <DashboardBox gridArea="i"></DashboardBox>
-      <DashboardBox gridArea="j"></DashboardBox>
+      <DashboardBox gridArea="i">
+        <Header title="Expense Breakdown by Category" sideText="+4" />
+        <div className="flex justify-between w-full px-3 items-center">
+          {pieChartData?.map((data, i) => (
+            <div key={`${data[0].name}-${i}`}>
+              <PieChart
+                width={120}
+                height={110}
+                margin={{
+                  top: 30,
+                  right: 5,
+                  left: 10,
+                  bottom: 30,
+                }}
+              >
+                <Pie
+                  stroke="none"
+                  data={data}
+                  innerRadius={16}
+                  outerRadius={36}
+                  fill="#8884d8"
+                  paddingAngle={2}
+                  dataKey="value"
+                >
+                  {data.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={pieColors[index % pieColors.length]}
+                    />
+                  ))}
+                </Pie>
+              </PieChart>
+              <h1 className="text-center text-white font-bold">
+                {data[0].name}
+              </h1>
+            </div>
+          ))}
+        </div>
+      </DashboardBox>
+      <DashboardBox gridArea="j" className="p-1">
+        <Header title="Overall Summary and Explanation Data" sideText="+15%" />
+        <div className="h-4 bg-green-800 rounded-xl w-full">
+          <div className="h-4 bg-green-500 rounded-xl w-40"></div>
+        </div>
+        <h5 className="text-white mt-2">
+          Orci aliquam enim vel diam. Venenatis euismod id donec mus lorem etiam
+          ullamcorper odio sed. Ipsum non sed gravida etiam urna egestas
+          molestie volutpat et. Malesuada quis pretium aliquet lacinia ornare
+          sed. In volutpat nullam at est id cum pulvinar nunc.
+        </h5>
+      </DashboardBox>
     </>
   );
 };
